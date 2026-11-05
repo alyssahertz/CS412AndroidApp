@@ -217,6 +217,20 @@ fun Index(modifier: Modifier = Modifier, grade:String, serviceConnection: androi
                 {
                     Text(text = "Send Broadcast", fontSize = 28.sp)
                 }
+
+                Spacer(modifier = Modifier.padding(0.dp, 5.dp))
+
+                Button (
+                    onClick = {
+                        context.startActivity(
+                            Intent(context, ThirdActivity::class.java)
+                        )
+                    },
+                    modifier = Modifier.width(340.dp)
+                )
+                {
+                    Text(text = "View Image Activity", fontSize = 28.sp)
+                }
             }
     }
 }
