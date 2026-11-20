@@ -2,6 +2,8 @@ package com.example.assignment2
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.textAsString
+import androidx.test.uiautomator.uiAutomator
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,5 +22,24 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.assignment2", appContext.packageName)
+    }
+
+    @Test
+    fun uiTest() = uiAutomator {
+        pressHome()
+
+        waitForStableInActiveWindow()
+
+        onElement {
+            textAsString() == "Assignment2"
+        }.click()
+
+        onElement {
+            textAsString() == "Start Activity Explicitly"
+        }.click()
+
+        onElement {
+            textAsString()?.contains("Different operating systems") ?: false
+        }
     }
 }
